@@ -1,0 +1,20 @@
+version: '2'
+services:
+    php:
+        container_name: ap-php
+        image: ap-php
+        build: ./php
+        volumes:
+            - ${APP_DIR}:/home/app:cached
+        network_mode: bridge
+    web:
+        container_name: ap-web
+        image: ap-web
+        build: ./web
+        links:
+            - php
+        volumes_from:
+            - php
+        ports:
+            - "21000:80"
+        network_mode: bridge
