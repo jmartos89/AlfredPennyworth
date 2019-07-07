@@ -43,12 +43,21 @@ class StartCommand extends UserCommand
         $message = $this->getMessage();
         $chat_id = $message->getChat()->getId();
 
-        $msg = 'Bienvenido';
+        $msg = 'Bienvenido' . PHP_EOL;
 
-        $msg .= '<b>' . 'Nunca quise que volviera a Gotham. Siempre supe que aquí no había nada para usted, salvo dolor y tragedia' . '</b>' . PHP_EOL;
-        $msg .= '<b>' . 'A ver cuando reconstruyen la mansión. Pasará de no dormir en un ático, a no dormir en una mansión.' . '</b>' . PHP_EOL;
+        $msg .= sprintf(
+            '<b>%s</b>%s',
+            'Nunca quise que volviera a Gotham. Siempre supe que aquí no había nada para usted, salvo dolor y tragedia',
+            PHP_EOL
+        );
 
+        $msg .= sprintf(
+            '<b>%s</b>%s',
+            'A ver cuando reconstruyen la mansión. Pasará de no dormir en un ático, a no dormir en una mansión',
+            PHP_EOL
+        );
         $data = [
+            'parse_mode' => 'HTML',
             'chat_id' => $chat_id,
             'text'    => $msg,
         ];
