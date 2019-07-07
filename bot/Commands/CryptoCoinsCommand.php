@@ -10,26 +10,26 @@ use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
 
 /**
- * User "/info" command
+ * User "/crypto_coins" command
  *
  * Simply echo the input back to the user.
  */
-class InfoCommand extends UserCommand
+class CryptoCoinsCommand extends UserCommand
 {
     /**
      * @var string
      */
-    protected $name = 'info';
+    protected $name = 'crypto_coins';
 
     /**
      * @var string
      */
-    protected $description = 'info';
+    protected $description = 'crypto_coins';
 
     /**
      * @var string
      */
-    protected $usage = '/info';
+    protected $usage = '/crypto_coins';
 
     /**
      * @var string
@@ -65,6 +65,7 @@ class InfoCommand extends UserCommand
         $msg = $output->fetch();
 
         $data = [
+            'parse_mode' => 'HTML',
             'chat_id' => $chat_id,
             'text'    => $msg,
         ];
