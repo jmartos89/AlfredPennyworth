@@ -10,26 +10,26 @@ use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
 
 /**
- * User "/crypto_coins" command
+ * User "/crypto" command
  *
  * Simply echo the input back to the user.
  */
-class CryptoCoinsCommand extends UserCommand
+class CryptoCommand extends UserCommand
 {
     /**
      * @var string
      */
-    protected $name = 'crypto_coins';
+    protected $name = 'crypto';
 
     /**
      * @var string
      */
-    protected $description = 'crypto_coins';
+    protected $description = 'crypto';
 
     /**
      * @var string
      */
-    protected $usage = '/crypto_coins';
+    protected $usage = '/crypto';
 
     /**
      * @var string
