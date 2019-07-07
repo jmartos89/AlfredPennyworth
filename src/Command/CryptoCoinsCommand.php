@@ -37,6 +37,10 @@ class CryptoCoinsCommand extends Command
 
         $data = $this->getData();
 
+        $totalInvested = 0;
+        $totalActual = 0;
+        $msg = '';
+
         foreach ($data as $d) {
             $key = array_search($d['crypto_coin'], array_column($cryptoCoins, 'id'));
 
@@ -45,14 +49,21 @@ class CryptoCoinsCommand extends Command
             $actual = $d['amount'] * $cryptoCoin['price_usd'];
             $difference = $actual - $d['invested'];
 
-            $msg = sprintf('<b>%s</b>: %s $%s', $d['crypto_coin'], round($cryptoCoin['price_usd'], 2), PHP_EOL);
+            $totalInvested += $d['invested'];
+            $totalActual += $actual;
+
+            $msg .= sprintf('<b>%s</b>: %s $%s', $d['crypto_coin'], round($cryptoCoin['price_usd'], 2), PHP_EOL);
             $msg .= sprintf('<b>Invested</b>: %s $%s', round($d['invested'], 2), PHP_EOL);
             $msg .= sprintf('<b>Amount</b>: %s $%s', round($d['amount'], 5), PHP_EOL);
             $msg .= sprintf('<b>Actual</b>: %s $%s', round($actual, 2), PHP_EOL);
-            $msg .= sprintf('<b>+/-</b>: %s $%s', round($difference, 2), PHP_EOL);
-
-            $output->writeln($msg);
+            $msg .= sprintf('<b>+/-</b>: %s $%s%s', round($difference, 2), PHP_EOL, PHP_EOL);
         }
+
+        $msg .= sprintf('<b>Total invested</b>: %s $%s', round($totalInvested, 2), PHP_EOL);
+        $msg .= sprintf('<b>Total actual</b>: %s $%s', round($totalActual, 2), PHP_EOL);
+        $msg .= sprintf('<b>+/-</b>: %s $%s', round($totalActual - $totalInvested, 2), PHP_EOL);
+
+        $output->writeln($msg);
     }
 
     private function getData()
