@@ -4,7 +4,6 @@ namespace App\Command;
 
 use App\Service\CryptoCoinsService;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -91,8 +90,8 @@ class CryptoCoinsCommand extends Command
             ],
             [
                 'crypto_coin' => 'ripple',
-                'amount' => '998.44450',
-                'invested' => '239.29000'
+                'amount' => '2989,4',
+                'invested' => '767'
             ],
             [
                 'crypto_coin' => 'neo',
