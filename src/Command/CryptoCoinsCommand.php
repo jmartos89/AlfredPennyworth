@@ -89,7 +89,7 @@ class CryptoCoinsCommand extends Command
                 'invested' => '241.68000'
             ],
             [
-                'crypto_coin' => 'ripple',
+                'crypto_coin' => 'xrp',
                 'amount' => '2989,4',
                 'invested' => '767'
             ],
